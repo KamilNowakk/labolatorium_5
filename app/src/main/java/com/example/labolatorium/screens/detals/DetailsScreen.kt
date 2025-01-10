@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +20,7 @@ import com.example.labolatorium.model.Movie
 import com.example.labolatorium.model.getMovies
 import com.example.labolatorium.widgets.MovieRow
 
-@SuppressLint("UnusedTransitionTargetStateParameter")
+@SuppressLint("UnusedTransitionTargetStateParameter", "UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun DetailsScreen(navController: NavController, movieId: Int?) {
     val newMovieList = getMovies().filter { movie -> movie.id == movieId }
@@ -28,7 +28,7 @@ fun DetailsScreen(navController: NavController, movieId: Int?) {
         topBar = {
             TopAppBar(backgroundColor = Color.LightGray, elevation = 5.dp) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(imageVector = Icons.Default.ArrowBack,
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Arrow Back",
                         modifier = Modifier.clickable {
                             navController.popBackStack()
