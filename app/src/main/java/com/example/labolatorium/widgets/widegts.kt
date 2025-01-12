@@ -21,16 +21,15 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.example.labolatorium.model.Movie
 import com.example.labolatorium.model.getMovies
 
-@Preview
 @Composable
 fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {}) {
     var expanded by remember { mutableStateOf(false) }
@@ -97,14 +96,14 @@ fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {}) 
                         Divider(modifier = Modifier.padding(3.dp))
                         Text(text = "Actors: ${movie.actors}", style = MaterialTheme.typography.caption)
                         Text(text = "Director: ${movie.director}", style = MaterialTheme.typography.caption)
-                        Icon(
-                            imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowUp,
-                            contentDescription = "Down arrow",
-                            modifier = Modifier.size(25.dp).clickable { expanded = !expanded },
-                            tint = Color.LightGray
-                        )
                     }
                 }
+                Icon(
+                    imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    contentDescription = if (expanded) "Up arrow" else "Down arrow",
+                    modifier = Modifier.size(25.dp).clickable { expanded = !expanded },
+                    tint = Color.Gray
+                )
             }
         }
     }
